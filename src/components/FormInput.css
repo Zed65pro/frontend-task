@@ -1,0 +1,42 @@
+.formInput{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+}
+
+input{
+    padding: 15px;
+    margin: 10px 0px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+
+label{
+    font-size: 12px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin: 5px 2px;
+}
+
+span{
+    font-size: 1rem;
+    padding: 1rem;
+    color: red;
+    display: none;
+}
+
+input:invalid[focused="true"]{
+    border: 1px solid red;
+}
+
+input:invalid[focused="true"] ~ span{
+    display: block;
+}
+
+select{
+    width: 350px;
+    height:40px;
+    border: 1px solid gray;
+    border-radius: 3px;
+}
