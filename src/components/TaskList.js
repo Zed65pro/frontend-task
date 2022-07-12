@@ -1,17 +1,15 @@
 import React from "react";
 import Task from "./Task";
 import "./TaskList.css";
+import { useTasks } from "./Context/task-context";
 const TaskList = (props) => {
+  const tasks = useTasks();
+
   const mapTasks = () => {
-    return props.tasks.map((task) => (
+    return tasks.map((task) => (
       <Task
-        key={task.id} 
-        tasks={props.tasks}
+        key={task.id}
         task={task}
-        id={task.id}
-        projectName={task.projectName}
-        taskName={task.taskName}
-        status={task.status}
         showTaskHandler={props.showTaskHandler}
       />
     ));

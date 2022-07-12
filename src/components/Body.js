@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "../UI/Button";
+import Button from "./UI/Button";
 import TaskList from "./TaskList";
 import Form from "./Form";
 
@@ -19,9 +19,9 @@ const Body = (props) => {
       <Button onClick={showTaskHandler}>Show tasks</Button>
       <Button onClick={isCreateTaskHandler}>Create task</Button>
       {isCreateTask && (
-        <Form isCreateTaskHandler={isCreateTaskHandler} title={"Create Task"} tasks={props.tasks}/>
+        <Form isCreateTaskHandler={isCreateTaskHandler} title={"Create Task"} />
       )}
-      {isShowTasks && <TaskList tasks={props.tasks} showTaskHandler={showTaskHandler} />}
+      {isShowTasks && <TaskList showTaskHandler={showTaskHandler} />}
     </div>
   );
 };

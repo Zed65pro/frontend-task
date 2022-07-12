@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import "./Form.css";
-import Button from "../UI/Button";
+import Button from "./UI/Button";
 import FormInput from "./FormInput";
+import { useTasks, useUpdateTasks } from "./Context/task-context";
+
 const Form = (props) => {
+  const tasks = useTasks();
+  const setTasks = useUpdateTasks();
+
   const [values, setValues] = useState({
     id: props.title === "Update Task" ? props.task.id : "",
     projectName: props.title === "Update Task" ? props.task.projectName : "",
@@ -58,13 +63,16 @@ const Form = (props) => {
   };
 
   const updateTaskHandler = () => {
-    const index = props.tasks.indexOf(props.task);
-    props.tasks[index] = {
+    const index = tasks.indexOf(props.task);
+
+    tasks[index] = {
       id: values.id,
       projectName: values.projectName,
       taskName: values.taskName,
       status: values.status,
     };
+
+    setTasks(tasks);
 
     props.isCloseForm();
     props.showTaskHandler();
@@ -76,13 +84,15 @@ const Form = (props) => {
       taskName: values.taskName,
       status: values.status,
     };
-    props.tasks.push(newTask);
+    tasks.push(newTask);
+    setTasks(tasks);
 
     props.isCreateTaskHandler();
   };
   const deleteTaskHandler = () => {
-    const index = props.tasks.indexOf(props.task);
-    props.tasks.splice(index, 1);
+    const index = tasks.indexOf(props.task);
+    tasks.splice(index, 1);
+    setTasks(tasks);
 
     props.isCloseForm();
     props.showTaskHandler();

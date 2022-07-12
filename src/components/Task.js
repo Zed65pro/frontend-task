@@ -15,17 +15,16 @@ const Task = (props) => {
   return (
     <React.Fragment>
       <tr className={`task ${highlight}`} onClick={isClickedHandler}>
-        <td>{props.id}</td>
-        <td>{props.projectName}</td>
-        <td>{props.taskName}</td>
-        <td>{props.status}</td>
+        <td>{props.task.id}</td>
+        <td>{props.task.projectName}</td>
+        <td>{props.task.taskName}</td>
+        <td>{props.task.status}</td>
       </tr>
       {highlight &&
         ReactDOM.createPortal(
           <Form
             title={"Update Task"}
             isCloseForm={closeFormHandler}
-            tasks={props.tasks}
             task={props.task}
             showTaskHandler={props.showTaskHandler}
           />,
