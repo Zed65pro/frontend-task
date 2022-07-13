@@ -1,36 +1,29 @@
-import React, { useState } from "react";
-import ReactDOM from "react-dom";
-import Form from "./Form";
+import React from "react";
 import "./Task.css";
+import { useSetSelectedTask,useSelectedTask } from "../context/task-context";
+
 const Task = (props) => {
-  const [highlight, setHighlight] = useState("");
+
+  const selectedTask = useSelectedTask();
+  const setSelectedTask = useSetSelectedTask();
 
   const isClickedHandler = () => {
-    setHighlight("highlight");
+    setSelectedTask(props.task);
   };
 
-  const closeFormHandler = () => {
-    setHighlight("");
-  };
+  const highlight = ()=>{
+    if(selectedTask){
+      return selectedTask.id === props.task.id? 'highlight': '';
+    }
+    return '';
+  }
   return (
-    <React.Fragment>
-      <tr className={`task ${highlight}`} onClick={isClickedHandler}>
+      <tr className={`task ${highlight()}`} onClick={isClickedHandler}>
         <td>{props.task.id}</td>
         <td>{props.task.projectName}</td>
         <td>{props.task.taskName}</td>
         <td>{props.task.status}</td>
       </tr>
-      {highlight &&
-        ReactDOM.createPortal(
-          <Form
-            title={"Update Task"}
-            isCloseForm={closeFormHandler}
-            task={props.task}
-            showTaskHandler={props.showTaskHandler}
-          />,
-          document.querySelector("#modal")
-        )}
-    </React.Fragment>
   );
 };
 

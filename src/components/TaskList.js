@@ -1,7 +1,8 @@
 import React from "react";
 import Task from "./Task";
 import "./TaskList.css";
-import { useTasks } from "./Context/task-context";
+import { useTasks } from "../context/task-context";
+
 const TaskList = (props) => {
   const tasks = useTasks();
 
@@ -10,7 +11,6 @@ const TaskList = (props) => {
       <Task
         key={task.id}
         task={task}
-        showTaskHandler={props.showTaskHandler}
       />
     ));
   };

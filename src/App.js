@@ -1,6 +1,6 @@
 import React from "react";
 import Body from "./components/Body";
-import TaskProvider from "./components/Context/task-context";
+import TaskProvider from "./context/task-context";
 
 export const App = () => {
   return (

@@ -1,18 +1,25 @@
 import React, { useState } from "react";
 import "./Form.css";
-import Button from "./UI/Button";
+import Button from "../UI/Button";
 import FormInput from "./FormInput";
-import { useTasks, useUpdateTasks } from "./Context/task-context";
+import {
+  useTasks,
+  useUpdateTasks,
+  useSelectedTask,
+  useSetSelectedTask,
+} from "../context/task-context";
 
 const Form = (props) => {
+  const setSelectedTask = useSetSelectedTask();
+  const selectedTask = useSelectedTask();
   const tasks = useTasks();
   const setTasks = useUpdateTasks();
 
   const [values, setValues] = useState({
-    id: props.title === "Update Task" ? props.task.id : "",
-    projectName: props.title === "Update Task" ? props.task.projectName : "",
-    taskName: props.title === "Update Task" ? props.task.taskName : "",
-    status: props.title === "Update Task" ? props.task.status : "",
+    id: selectedTask ? selectedTask.id : "",
+    projectName: selectedTask ? selectedTask.projectName : "",
+    taskName: selectedTask ? selectedTask.taskName : "",
+    status: selectedTask ? selectedTask.status : "",
   });
 
   const inputs = [
@@ -63,7 +70,7 @@ const Form = (props) => {
   };
 
   const updateTaskHandler = () => {
-    const index = tasks.indexOf(props.task);
+    const index = tasks.indexOf(selectedTask);
 
     tasks[index] = {
       id: values.id,
@@ -73,9 +80,7 @@ const Form = (props) => {
     };
 
     setTasks(tasks);
-
-    props.isCloseForm();
-    props.showTaskHandler();
+    setSelectedTask(null);
   };
   const createTaskHandler = () => {
     const newTask = {
@@ -90,17 +95,18 @@ const Form = (props) => {
     props.isCreateTaskHandler();
   };
   const deleteTaskHandler = () => {
-    const index = tasks.indexOf(props.task);
+    const index = tasks.indexOf(selectedTask);
     tasks.splice(index, 1);
     setTasks(tasks);
 
-    props.isCloseForm();
-    props.showTaskHandler();
+    setSelectedTask(null);
   };
   return (
     <div className="modal">
       <div className="form">
-        <h1 className="title">{props.title}</h1>
+        <h1 className="title">
+          {props.isCreate ? "Create Task" : "Update Task"}
+        </h1>
         {inputs.map((input) => (
           <FormInput
             key={input.id}
@@ -109,7 +115,7 @@ const Form = (props) => {
             onChange={onChange}
           />
         ))}
-        {props.title === "Create Task" ? (
+        {props.isCreate ? (
           <div className="buttons-create">
             <Button onClick={createTaskHandler}>Create Task</Button>
             <Button onClick={props.isCreateTaskHandler}>Close form</Button>
@@ -122,7 +128,13 @@ const Form = (props) => {
             <Button onClick={deleteTaskHandler} className="delete">
               Delete Task
             </Button>
-            <Button onClick={props.isCloseForm}>Close form</Button>
+            <Button
+              onClick={() => {
+                setSelectedTask(null);
+              }}
+            >
+              Close form
+            </Button>
           </div>
         )}
       </div>

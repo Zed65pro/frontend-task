@@ -20,7 +20,12 @@ const FormInput = (props) => {
           focused={focused.toString()}
         />
       ) : (
-        <select {...inputProps} onChange={onChange} value={inputProps.value}>
+        <select
+          {...inputProps}
+          onBlur={onChange}
+          onChange={onChange}
+          autoFocus={!props.value}
+        >
           <option value="active">Active</option>
           <option value="inactive">Inactive</option>
           <option value="in-progress">Inprogress</option>
