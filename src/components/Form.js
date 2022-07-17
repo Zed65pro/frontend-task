@@ -60,7 +60,7 @@ const Form = (props) => {
       placeholder: "Status",
       errorMessage: "You must choose a status for the task.",
       label: "Status",
-      pattern: "inactive" || "active" || "in-progress",
+      pattern: "inactive",
       required: true,
     },
   ];
@@ -82,7 +82,10 @@ const Form = (props) => {
     setTasks(tasks);
     setSelectedTask(null);
   };
-  const createTaskHandler = () => {
+  const createTaskHandler = (e) => {
+
+    e.preventDefault();
+
     const newTask = {
       id: values.id,
       projectName: values.projectName,
@@ -103,7 +106,7 @@ const Form = (props) => {
   };
   return (
     <div className="modal">
-      <div className="form">
+      <form onSubmit = {props.isCreate? createTaskHandler:updateTaskHandler } className="form">
         <h1 className="title">
           {props.isCreate ? "Create Task" : "Update Task"}
         </h1>
@@ -117,12 +120,12 @@ const Form = (props) => {
         ))}
         {props.isCreate ? (
           <div className="buttons-create">
-            <Button onClick={createTaskHandler}>Create Task</Button>
+            <Button type="submit" >Create Task</Button>
             <Button onClick={props.isCreateTaskHandler}>Close form</Button>
           </div>
         ) : (
           <div className="buttons-manage">
-            <Button onClick={updateTaskHandler} className="update">
+            <Button type="submit" className="update">
               Update Task
             </Button>
             <Button onClick={deleteTaskHandler} className="delete">
@@ -137,7 +140,7 @@ const Form = (props) => {
             </Button>
           </div>
         )}
-      </div>
+      </form>
     </div>
   );
 };
