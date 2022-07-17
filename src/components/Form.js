@@ -60,7 +60,7 @@ const Form = (props) => {
       placeholder: "Status",
       errorMessage: "You must choose a status for the task.",
       label: "Status",
-      pattern: "inactive",
+      pattern: "inactive" || "active" || "inprogress",
       required: true,
     },
   ];
