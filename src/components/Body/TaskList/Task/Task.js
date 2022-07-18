@@ -1,6 +1,6 @@
 import React from "react";
 import "./Task.css";
-import { useSetSelectedTask,useSelectedTask } from "../context/task-context";
+import { useSetSelectedTask,useSelectedTask } from "../../../context/task-context";
 
 const Task = (props) => {
 

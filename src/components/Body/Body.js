@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Button from "../UI/Button";
-import TaskList from "./TaskList";
-import Form from "./Form";
+import Button from "../UI/Button/Button";
+import TaskList from "./TaskList/TaskList";
+import Form from "../Form/Form";
 import { useSelectedTask } from "../context/task-context";
 
 const Body = (props) => {

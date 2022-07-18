@@ -1,7 +1,7 @@
 import React from "react";
-import Task from "./Task";
+import Task from "./Task/Task";
 import "./TaskList.css";
-import { useTasks } from "../context/task-context";
+import { useTasks } from "../../context/task-context";
 
 const TaskList = (props) => {
   const tasks = useTasks();

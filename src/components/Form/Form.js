@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Form.css";
-import Button from "../UI/Button";
-import FormInput from "./FormInput";
+import Button from "../UI/Button/Button";
+import FormInput from "./FormInput/FormInput";
 import {
   useTasks,
   useUpdateTasks,
