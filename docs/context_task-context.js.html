@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: context/task-context.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: context/task-context.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState, useContext } from "react";
+
+const taskContext = React.createContext();
+const updateTaskContext = React.createContext();
+const selectedTaskContext = React.createContext();
+const setSelectedTaskContext = React.createContext();
+
+/**
+ * tasks array context
+ * @component
+ * @returns {React.Context&lt;any>}
+ */
+export const useTasks = () => {
+  return useContext(taskContext);
+};
+/**
+ * tasks setter context
+ * @const
+ * @returns {React.Context&lt;any>}
+ */
+export const useUpdateTasks = () => {
+  return useContext(updateTaskContext);
+};
+/**
+ * selected task context
+ * @const
+ * @returns {React.Context&lt;any>}
+ */
+export const useSelectedTask = () => {
+  return useContext(selectedTaskContext);
+};
+/**
+ * selected task setter context
+ * @const
+ * @returns {React.Context&lt;any>}
+ */
+export const useSetSelectedTask = () => {
+  return useContext(setSelectedTaskContext);
+};
+
+/**
+ * context provider
+ * @component
+ * @param {Object} props
+ * @param {JSX.Element} props.children
+ * @returns {JSX.Element}
+ */
+const TaskProvider = (props) => {
+  /**
+   * React useState reference state - state of tasks array
+   * @typedef {array&lt;Object>} tasks
+   * @const
+   */
+
+  /**
+   * React useState state setter - setter function for tasks state
+   * @callback setTasks
+   * @param {tasks} state
+   * @const
+   * @returns {void}
+   */
+  const [tasks, setTasks] = useState([
+    {
+      id: 1,
+      projectName: "kk",
+      taskName: "pentest",
+      status: "active",
+    },
+    {
+      id: 2,
+      projectName: "kk12",
+      taskName: "pentest12312",
+      status: "active",
+    },
+    {
+      id: 3,
+      projectName: "kk1222",
+      taskName: "pentest",
+      status: "in-progress",
+    },
+    {
+      id: 4,
+      projectName: "kk2",
+      taskName: "pentest4",
+      status: "inactive",
+    },
+  ]);
+  /**
+   * React useState reference state - state of selected task
+   * @typedef {Object} selectedTask
+   * @property {number} selectedTask.id
+   * @property {string} selectedTask.projectName
+   * @property {string} selectedTask.taskName
+   * @property {string} selectedTask.status
+   * @const
+   */
+
+  /**
+   * React useState state setter - setter function for selected task
+   * @callback setSelectedTask
+   * @param {isShowTasks} state
+   * @function
+   * @returns {void}
+   */
+  const [selectedTask, setSelectedTask] = useState(null);
+  return (
+    &lt;taskContext.Provider value={tasks}>
+      &lt;updateTaskContext.Provider value={setTasks}>
+        &lt;selectedTaskContext.Provider value={selectedTask}>
+          &lt;setSelectedTaskContext.Provider value={setSelectedTask}>
+            {props.children}
+          &lt;/setSelectedTaskContext.Provider>
+        &lt;/selectedTaskContext.Provider>
+      &lt;/updateTaskContext.Provider>
+    &lt;/taskContext.Provider>
+  );
+};
+
+export default TaskProvider;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Body">Body</a></li><li><a href="global.html#Button">Button</a></li><li><a href="global.html#createTaskHandler">createTaskHandler</a></li><li><a href="global.html#deleteTaskHandler">deleteTaskHandler</a></li><li><a href="global.html#focused">focused</a></li><li><a href="global.html#Form">Form</a></li><li><a href="global.html#FormInput">FormInput</a></li><li><a href="global.html#handleFocus">handleFocus</a></li><li><a href="global.html#highlight">highlight</a></li><li><a href="global.html#isClickedHandler">isClickedHandler</a></li><li><a href="global.html#isCreateTask">isCreateTask</a></li><li><a href="global.html#isCreateTaskHandler">isCreateTaskHandler</a></li><li><a href="global.html#isShowTasks">isShowTasks</a></li><li><a href="global.html#mapTasks">mapTasks</a></li><li><a href="global.html#onChange">onChange</a></li><li><a href="global.html#setFocused">setFocused</a></li><li><a href="global.html#setIsCreateTask">setIsCreateTask</a></li><li><a href="global.html#setIsShowTasks">setIsShowTasks</a></li><li><a href="global.html#setSelectedTask">setSelectedTask</a></li><li><a href="global.html#setTasks">setTasks</a></li><li><a href="global.html#setValues">setValues</a></li><li><a href="global.html#showTaskHandler">showTaskHandler</a></li><li><a href="global.html#Task">Task</a></li><li><a href="global.html#TaskList">TaskList</a></li><li><a href="global.html#TaskProvider">TaskProvider</a></li><li><a href="global.html#tasks">tasks</a></li><li><a href="global.html#updateTaskHandler">updateTaskHandler</a></li><li><a href="global.html#useSelectedTask">useSelectedTask</a></li><li><a href="global.html#useSetSelectedTask">useSetSelectedTask</a></li><li><a href="global.html#useTasks">useTasks</a></li><li><a href="global.html#useUpdateTasks">useUpdateTasks</a></li><li><a href="global.html#values">values</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Tue Jul 19 2022 00:12:50 GMT+0300 (GMT+03:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

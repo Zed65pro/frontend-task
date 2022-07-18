@@ -3,9 +3,24 @@ import Task from "./Task/Task";
 import "./TaskList.css";
 import { useTasks } from "../../context/task-context";
 
-const TaskList = (props) => {
+/**
+ * Shows all tasks in a table form
+ * @component
+ * @returns {JSX.Element}
+ */
+const TaskList = () => {
+
+  /**
+   * @typedef {React.Context<any>} tasks
+   * @const
+   */
   const tasks = useTasks();
 
+  /**
+   * @typedef {Function} mapTasks
+   * @returns {void}
+   * @function
+   */
   const mapTasks = () => {
     return tasks.map((task) => (
       <Task
