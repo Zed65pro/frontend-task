@@ -2,7 +2,7 @@ import React from "react";
 import Task from "./Task/Task";
 import "./TaskList.css";
 import { useTasks } from "../../context/task-context";
-
+/**@module TaskList */
 /**
  * Shows all tasks in a table form
  * @component

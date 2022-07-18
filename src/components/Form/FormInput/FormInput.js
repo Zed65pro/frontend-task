@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./FormInput.css";
-
+/**@module FormInput */
 /**
  * Indivial form input custom component
  * @component

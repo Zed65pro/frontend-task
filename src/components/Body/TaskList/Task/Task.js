@@ -4,7 +4,7 @@ import {
   useSetSelectedTask,
   useSelectedTask,
 } from "../../../context/task-context";
-
+/**@module Task */
 /**
  * Individual task component
  * @component

@@ -2,15 +2,17 @@ import React from 'react'
 
 import './Button.css';
 
+/**@module UI */
+
 /**
  * Button component
- * @component
  * @param {Object} props 
  * @param {Function} props.onClick
  * @param {string} props.type
  * @param {string} props.className
  * @param {JSX.Element} props.children
  * @returns {JSX.Element}
+ * @component
  */
 const Button = (props) => {
   return (

@@ -3,7 +3,7 @@ import Button from "../UI/Button/Button";
 import TaskList from "./TaskList/TaskList";
 import Form from "../Form/Form";
 import { useSelectedTask } from "../context/task-context";
-
+/**@module Body */
 /**
  * This is the main body of the application which acts as a container for the other components
  * @component
