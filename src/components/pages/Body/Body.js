@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import Button from "../UI/Button/Button";
-import TaskList from "./TaskList/TaskList";
-import Form from "../Form/Form";
-import { useSelectedTask } from "../context/task-context";
-/**@module Body */
+import Button from "../../atoms/Button/Button";
+import TaskList from "../../organisms/TaskList/TaskList";
+import Form from "../../organisms/Form/Form";
+import { useSelectedTask } from "../../context/task-context";
+import "./Body.css";
+/**@module pages/Body */
 /**
  * This is the main body of the application which acts as a container for the other components
  * @component
@@ -63,9 +64,14 @@ const Body = () => {
     setIsCreateTask((prevState) => !prevState);
   };
   return (
-    <div>
-      <Button onClick={showTaskHandler}>Show tasks</Button>
-      <Button onClick={isCreateTaskHandler}>Create task</Button>
+    <div className="main-page">
+      <h1 className="title">
+        Task Management Application
+      </h1>
+      <div>
+        <Button onClick={showTaskHandler}>Show tasks</Button>
+        <Button onClick={isCreateTaskHandler}>Create task</Button>
+      </div>
       {isCreateTask && (
         <Form
           isCreateTaskHandler={isCreateTaskHandler}

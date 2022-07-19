@@ -3,8 +3,8 @@ import "./Task.css";
 import {
   useSetSelectedTask,
   useSelectedTask,
-} from "../../../context/task-context";
-/**@module Task */
+} from "../../context/task-context";
+/**@module molecules/Task */
 /**
  * Individual task component
  * @component

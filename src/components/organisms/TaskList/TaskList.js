@@ -1,8 +1,8 @@
 import React from "react";
-import Task from "./Task/Task";
+import Task from "../../molecules/Task/Task";
 import "./TaskList.css";
 import { useTasks } from "../../context/task-context";
-/**@module TaskList */
+/**@module organisms/TaskList */
 /**
  * Shows all tasks in a table form
  * @component

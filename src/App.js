@@ -1,5 +1,5 @@
 import React from "react";
-import Body from "./components/Body/Body";
+import Body from "./components/pages/Body/Body";
 import TaskProvider from "./components/context/task-context";
 
 export const App = () => {

@@ -84,6 +84,18 @@ const TaskProvider = (props) => {
       taskName: "pentest4",
       status: "inactive",
     },
+    {
+      id: 5,
+      projectName: "Computing",
+      taskName: "Documentation",
+      status: "active",
+    },
+    {
+      id: 6,
+      projectName: "LLC",
+      taskName: "doing nothing",
+      status: "active",
+    },
   ]);
   /**
    * React useState reference state - state of selected task
